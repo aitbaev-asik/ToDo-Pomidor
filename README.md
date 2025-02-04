@@ -10,8 +10,6 @@
 
 ## Установка и запуск
 
-1. **Клонируйте репозиторий:**
-
    ```bash
    git clone git@github.com:aitbaev-asik/ToDo-Pomidor.git
    cd ToDo-Pomidor
