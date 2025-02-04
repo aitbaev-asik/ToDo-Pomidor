@@ -46,14 +46,12 @@ docker run -d -p 3000:80 react-app
       <ul>
         <li><a href="https://www.youtube.com/watch?v=KCrXgy8qtjM" target="_blank">В целом что такое Vite</a></li>
         <li><a href="https://www.youtube.com/watch?v=UTBqqUgvVGI&t=211s" target="_blank">Подробно про Vite</a></li>
-        <li><a href="https://www.youtube.com/watch?v=VAeRhmpcWEQ" target="_blank"><Более подробнее про Vite</a></li>
-        <li><a href="https://www.youtube.com/watch?v=CgkZ7MvWUAA" target="_blank"><Большой курс по React</a></li>
-        <li><a href="https://www.youtube.com/watch?v=Gw1Amw6Duis" target="_blank">Tailwind Css, React, TS</a></li>
-        <li><a href="https://www.youtube.com/watch?v=siTUv1L9ymM&t=149s" target="_blank">React+Typescript</a></li>
-        <li><a href="https://www.youtube.com/watch?v=RbZyQWOEmD0" target="_blank">Настройка Vite</a></li>
+        <li><a href="https://www.youtube.com/watch?v=VAeRhmpcWEQ" target="_blank">Более подробнее про Vite</a></li>
+        <li><a href="https://www.youtube.com/watch?v=CgkZ7MvWUAA" target="_blank">Большой курс по React</a></li>
+        <li><a href="https://www.youtube.com/watch?v=siTUv1L9ymM&t=149s" target="_blank">Tailwind Css, React, TS</a></li>
         <li><a href="https://www.youtube.com/watch?v=cchqeWY0Nak&t=86s" target="_blank">React+Typescript</a></li>
         <li><a href="https://www.youtube.com/watch?v=TPACABQTHvM" target="_blank">TypeScript in React</a></li>
-        <li><a href="https://www.youtube.com/watch?v=GGi7Brsf7js" target="_blank">Видео 10</a></li>
+        <li><a href="https://www.youtube.com/watch?v=GGi7Brsf7js" target="_blank">Это не относится , но прикол про расширения</a></li>
       </ul>
     </section>
   </div>
