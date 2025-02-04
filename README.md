@@ -52,7 +52,7 @@ docker run -d -p 3000:80 react-app
         <li><a href="https://www.youtube.com/watch?v=siTUv1L9ymM&t=149s" target="_blank">React+Typescript</a></li>
         <li><a href="https://www.youtube.com/watch?v=RbZyQWOEmD0" target="_blank">Настройка Vite</a></li>
         <li><a href="https://www.youtube.com/watch?v=cchqeWY0Nak&t=86s" target="_blank">React+Typescript</a></li>
-        <li><a href="https://www.youtube.com/watch?v=TPACABQTHvM" target="_blank">Толку нет но прикольно</a></li>
+        <li><a href="https://www.youtube.com/watch?v=TPACABQTHvM" target="_blank">TypeScript in React</a></li>
         <li><a href="https://www.youtube.com/watch?v=GGi7Brsf7js" target="_blank">Видео 10</a></li>
       </ul>
     </section>
