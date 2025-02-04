@@ -16,7 +16,7 @@
    docker build -t react-app .
    docker run -d -p 3000:80 react-app
    http://localhost:3000
-
+   ```bash
 
 Все это получилось засчет этих ссылок:
 Документации:
