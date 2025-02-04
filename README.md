@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>React + Vite + TypeScript ToDoList + Pomodora</title>
-</head>
 <body>
   <header>
     <h1>React + Vite + TypeScript ToDoList + Pomodora</h1>
