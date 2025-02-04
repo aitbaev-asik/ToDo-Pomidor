@@ -39,20 +39,20 @@ docker run -d -p 3000:80 react-app
       <p>Проект создан с использованием следующих источников:</p>
       <ul>
         <li><a href="https://legacy.reactjs.org/docs/getting-started.html" target="_blank">React Documentation</a></li>
-        <li><a href="https://vite.dev/guide/" target="_blank">Vite Guide</a></li>
+        <li><a href="https://vite.dev/guide/" target="_blank">Vite Documentation</a></li>
         <li><a href="https://www.typescriptlang.org/docs/" target="_blank">TypeScript Documentation</a></li>
       </ul>
       <p>Видео уроки:</p>
       <ul>
-        <li><a href="https://www.youtube.com/watch?v=KCrXgy8qtjM" target="_blank">Видео 1</a></li>
-        <li><a href="https://www.youtube.com/watch?v=UTBqqUgvVGI&t=211s" target="_blank">Видео 2</a></li>
-        <li><a href="https://www.youtube.com/watch?v=VAeRhmpcWEQ" target="_blank">Видео 3</a></li>
-        <li><a href="https://www.youtube.com/watch?v=CgkZ7MvWUAA" target="_blank">Видео 4</a></li>
-        <li><a href="https://www.youtube.com/watch?v=Gw1Amw6Duis" target="_blank">Видео 5</a></li>
-        <li><a href="https://www.youtube.com/watch?v=siTUv1L9ymM&t=149s" target="_blank">Видео 6</a></li>
-        <li><a href="https://www.youtube.com/watch?v=RbZyQWOEmD0" target="_blank">Видео 7</a></li>
-        <li><a href="https://www.youtube.com/watch?v=cchqeWY0Nak&t=86s" target="_blank">Видео 8</a></li>
-        <li><a href="https://www.youtube.com/watch?v=TPACABQTHvM" target="_blank">Видео 9</a></li>
+        <li><a href="https://www.youtube.com/watch?v=KCrXgy8qtjM" target="_blank">В целом что такое Vite</a></li>
+        <li><a href="https://www.youtube.com/watch?v=UTBqqUgvVGI&t=211s" target="_blank">Подробно про Vite</a></li>
+        <li><a href="https://www.youtube.com/watch?v=VAeRhmpcWEQ" target="_blank"><Более подробнее про Vite</a></li>
+        <li><a href="https://www.youtube.com/watch?v=CgkZ7MvWUAA" target="_blank"><Большой курс по React</a></li>
+        <li><a href="https://www.youtube.com/watch?v=Gw1Amw6Duis" target="_blank">Tailwind Css, React, TS</a></li>
+        <li><a href="https://www.youtube.com/watch?v=siTUv1L9ymM&t=149s" target="_blank">React+Typescript</a></li>
+        <li><a href="https://www.youtube.com/watch?v=RbZyQWOEmD0" target="_blank">Настройка Vite</a></li>
+        <li><a href="https://www.youtube.com/watch?v=cchqeWY0Nak&t=86s" target="_blank">React+Typescript</a></li>
+        <li><a href="https://www.youtube.com/watch?v=TPACABQTHvM" target="_blank">Толку нет но прикольно</a></li>
         <li><a href="https://www.youtube.com/watch?v=GGi7Brsf7js" target="_blank">Видео 10</a></li>
       </ul>
     </section>
