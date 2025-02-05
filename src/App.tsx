@@ -9,10 +9,11 @@ const INITIAL_STATE: AppState = {
   tasks: [],
   timer: {
     mode: 'work',
-    timeLeft: 25 * 60,
+    timeLeft: 25 * 60, // 25 minutes
     isRunning: false,
     workDuration: 25 * 60,
     breakDuration: 5 * 60,
+    linkedTaskId: null,
   },
   theme: 'light',
 };
@@ -34,6 +35,30 @@ function App() {
       }, 1000);
     } else if (state.timer.timeLeft === 0) {
       const newMode = state.timer.mode === 'work' ? 'break' : 'work';
+      
+      // If it's the end of a work session and there's a linked task, move it to completed
+      if (state.timer.mode === 'work' && state.timer.linkedTaskId) {
+        const linkedTask = state.tasks.find(task => task.id === state.timer.linkedTaskId);
+        if (linkedTask) {
+          setState(prev => ({
+            ...prev,
+            tasks: prev.tasks.map(task =>
+              task.id === linkedTask.id
+                ? { ...task, status: 'completed' }
+                : task
+            ),
+            timer: {
+              ...prev.timer,
+              mode: newMode,
+              timeLeft: newMode === 'work' ? prev.timer.workDuration : prev.timer.breakDuration,
+              isRunning: false,
+              linkedTaskId: null,
+            },
+          }));
+          return;
+        }
+      }
+
       setState((prev) => ({
         ...prev,
         timer: {
@@ -51,12 +76,13 @@ function App() {
     document.documentElement.classList.toggle('dark', state.theme === 'dark');
   }, [state.theme]);
 
-  const handleAddTask = (title: string) => {
+  const handleAddTask = (title: string, linkedToPomodoro: boolean) => {
     const newTask: Task = {
       id: crypto.randomUUID(),
       title,
       status: 'backlog',
       createdAt: Date.now(),
+      linkedToPomodoro,
     };
     setState((prev) => ({
       ...prev,
@@ -65,16 +91,49 @@ function App() {
   };
 
   const handleUpdateTask = (task: Task) => {
-    setState((prev) => ({
-      ...prev,
-      tasks: prev.tasks.map((t) => (t.id === task.id ? task : t)),
-    }));
+    setState((prev) => {
+      // If the task is moved to in-progress and is linked to pomodoro, start the timer
+      if (task.status === 'in-progress' && task.linkedToPomodoro) {
+        return {
+          ...prev,
+          tasks: prev.tasks.map((t) => (t.id === task.id ? task : t)),
+          timer: {
+            ...prev.timer,
+            isRunning: true,
+            mode: 'work',
+            timeLeft: prev.timer.workDuration,
+            linkedTaskId: task.id,
+          },
+        };
+      }
+      
+      // If the task is moved out of in-progress and is the linked task, stop the timer
+      if (task.id === prev.timer.linkedTaskId && task.status !== 'in-progress') {
+        return {
+          ...prev,
+          tasks: prev.tasks.map((t) => (t.id === task.id ? task : t)),
+          timer: {
+            ...prev.timer,
+            isRunning: false,
+            linkedTaskId: null,
+          },
+        };
+      }
+
+      return {
+        ...prev,
+        tasks: prev.tasks.map((t) => (t.id === task.id ? task : t)),
+      };
+    });
   };
 
   const handleDeleteTask = (id: string) => {
     setState((prev) => ({
       ...prev,
       tasks: prev.tasks.filter((t) => t.id !== id),
+      timer: prev.timer.linkedTaskId === id
+        ? { ...prev.timer, isRunning: false, linkedTaskId: null }
+        : prev.timer,
     }));
   };
 
@@ -97,6 +156,7 @@ function App() {
         mode: newMode,
         timeLeft: newMode === 'work' ? prev.timer.workDuration : prev.timer.breakDuration,
         isRunning: false,
+        linkedTaskId: newMode === 'break' ? null : prev.timer.linkedTaskId,
       },
     }));
   };
@@ -142,10 +202,11 @@ function App() {
           onAddTask={handleAddTask}
           onUpdateTask={handleUpdateTask}
           onDeleteTask={handleDeleteTask}
+          linkedTaskId={state.timer.linkedTaskId}
         />
       </div>
     </div>
   );
 }
 
-export default App
+export default App;

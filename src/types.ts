@@ -3,6 +3,7 @@ export interface Task {
   title: string;
   status: 'backlog' | 'todo' | 'in-progress' | 'completed';
   createdAt: number;
+  linkedToPomodoro: boolean;
 }
 
 export interface TimerState {
@@ -11,6 +12,7 @@ export interface TimerState {
   isRunning: boolean;
   workDuration: number;
   breakDuration: number;
+  linkedTaskId: string | null;
 }
 
 export interface AppState {

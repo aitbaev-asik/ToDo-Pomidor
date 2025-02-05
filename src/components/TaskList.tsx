@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Plus, Edit2, Trash2, GripVertical } from 'lucide-react';
+import { Plus, Edit2, Trash2, GripVertical, Timer } from 'lucide-react';
 import type { Task } from '../types';
 
 interface TaskListProps {
   tasks: Task[];
-  onAddTask: (title: string) => void;
+  onAddTask: (title: string, linkedToPomodoro: boolean) => void;
   onUpdateTask: (task: Task) => void;
   onDeleteTask: (id: string) => void;
+  linkedTaskId: string | null;
 }
 
 const COLUMNS = ['backlog', 'todo', 'in-progress', 'completed'] as const;
@@ -17,17 +18,19 @@ const COLUMN_TITLES = {
   completed: 'Completed',
 };
 
-export function TaskList({ tasks, onAddTask, onUpdateTask, onDeleteTask }: TaskListProps) {
+export function TaskList({ tasks, onAddTask, onUpdateTask, onDeleteTask, linkedTaskId }: TaskListProps) {
   const [newTask, setNewTask] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editText, setEditText] = useState('');
   const [draggedTask, setDraggedTask] = useState<Task | null>(null);
+  const [linkToPomodoro, setLinkToPomodoro] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (newTask.trim()) {
-      onAddTask(newTask.trim());
+      onAddTask(newTask.trim(), linkToPomodoro);
       setNewTask('');
+      setLinkToPomodoro(false);
     }
   };
 
@@ -82,6 +85,17 @@ export function TaskList({ tasks, onAddTask, onUpdateTask, onDeleteTask }: TaskL
           className="flex-1 rounded-lg border border-gray-300 px-4 py-2 transition-colors focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white"
         />
         <button
+          type="button"
+          onClick={() => setLinkToPomodoro(!linkToPomodoro)}
+          className={`rounded-lg px-4 py-2 transition-colors ${
+            linkToPomodoro
+              ? 'bg-blue-500 text-white hover:bg-blue-600'
+              : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300'
+          }`}
+        >
+          <Timer className="h-5 w-5" />
+        </button>
+        <button
           type="submit"
           className="rounded-lg bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-600"
         >
@@ -124,9 +138,20 @@ export function TaskList({ tasks, onAddTask, onUpdateTask, onDeleteTask }: TaskL
                         autoFocus
                       />
                     ) : (
-                      <span className={`flex-1 ${task.status === 'completed' ? 'line-through text-gray-500 dark:text-gray-400' : 'dark:text-white'}`}>
-                        {task.title}
-                      </span>
+                      <div className="flex flex-1 items-center gap-2">
+                        <span className={`flex-1 ${task.status === 'completed' ? 'line-through text-gray-500 dark:text-gray-400' : 'dark:text-white'}`}>
+                          {task.title}
+                        </span>
+                        {task.linkedToPomodoro && (
+                          <Timer
+                            className={`h-4 w-4 ${
+                              task.id === linkedTaskId
+                                ? 'text-blue-500 dark:text-blue-400'
+                                : 'text-gray-400'
+                            }`}
+                          />
+                        )}
+                      </div>
                     )}
                     <button
                       onClick={() => startEditing(task)}
