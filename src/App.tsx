@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { TaskList } from './components/TaskList';
 import { PomodoroTimer } from './components/PomodoroTimer';
 import { ThemeToggle } from './components/ThemeToggle';
